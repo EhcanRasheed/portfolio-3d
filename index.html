@@ -1,487 +1,1065 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ehsan | Systems Architect & Full-Stack Engineer</title>
-    <meta name="description" content="Full-Stack Engineering. AI Architectures. Cybersecurity. I build complex, highly scalable systems from the ground up because I genuinely believe it all connects at the end.">
-    
-    <!-- Open Graph / Facebook / LinkedIn -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ehsan-portfolio.com/">
-    <meta property="og:title" content="Ehsan | Systems Architect & Full-Stack Engineer">
-    <meta property="og:description" content="Full-Stack Engineering. AI Architectures. Cybersecurity. I build complex, highly scalable systems from the ground up because I genuinely believe it all connects at the end.">
-    <meta property="og:image" content="https://ehsan-portfolio.com/assets/hero.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ehsan, Full-Stack Developer</title>
+<meta name="description" content="Ehsan, a full-stack developer building web applications, AI-driven products and security-minded software.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ehsan, Full-Stack Developer">
+<meta property="og:description" content="Full-stack developer building web applications, AI-driven products and security-minded software.">
+<!-- REPLACE_ME: set og:url and og:image after deploying -->
 
-    <!-- Twitter / X -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ehsan-portfolio.com/">
-    <meta property="twitter:title" content="Ehsan | Systems Architect & Full-Stack Engineer">
-    <meta property="twitter:description" content="Full-Stack Engineering. AI Architectures. Cybersecurity. I build complex, highly scalable systems from the ground up because I genuinely believe it all connects at the end.">
-    <meta property="twitter:image" content="https://ehsan-portfolio.com/assets/hero.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================================================
+   EHSAN PORTFOLIO · single file, light + dark themes
+   =========================================================== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+/* ---- LIGHT THEME (default) ---- */
+:root,
+html[data-theme="light"]{
+  --bg:#f4efe7; --bg-soft:#ede6da; --card:#fbf8f2; --card-hi:#ede6da;
+  --text:#23201b; --text-soft:#5c564c; --text-faint:#9a9286;
+  --line:rgba(35,32,27,0.12); --line-hi:rgba(35,32,27,0.26);
+  --accent:#9a3b2e; --accent-deep:#7a2d22; --accent-soft:rgba(154,59,46,0.10);
+  --shadow:rgba(35,32,27,0.10);
+  --blob1:rgba(154,59,46,0.92); --blob2:rgba(176,122,44,0.55); --blob3:rgba(251,248,242,0.85);
+  --blob-stroke:rgba(35,32,27,0.18); --con:154,59,46; --c3-line:120,90,60;
+  --grain-opacity:0.5;
+}
+/* ---- DARK THEME (charcoal + bronze) ---- */
+html[data-theme="dark"]{
+  --bg:#16130f; --bg-soft:#1c1813; --card:#201b15; --card-hi:#272118;
+  --text:#ece7df; --text-soft:#9c948a; --text-faint:#645c50;
+  --line:rgba(255,255,255,0.07); --line-hi:rgba(255,255,255,0.16);
+  --accent:#c8975c; --accent-deep:#b3824a; --accent-soft:rgba(200,151,92,0.13);
+  --shadow:rgba(0,0,0,0.45);
+  --blob1:rgba(224,158,74,0.95); --blob2:rgba(232,109,74,0.62); --blob3:rgba(248,224,180,0.9);
+  --blob-stroke:rgba(255,255,255,0.16); --con:224,121,74; --c3-line:248,210,165;
+  --grain-opacity:0.16;
+}
+
+:root{
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Outfit',sans-serif;
+  --maxw:1120px;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+html{font-size:16px;scroll-behavior:smooth;}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-weight:300;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  transition:background .6s var(--ease),color .6s var(--ease);
+}
+::selection{background:var(--accent);color:#fff;}
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:var(--bg-soft);}
+::-webkit-scrollbar-thumb{background:var(--line-hi);border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:var(--accent);}
+a{color:inherit;text-decoration:none;}
+.accent{color:var(--accent);}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;
+}
+
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  opacity:var(--grain-opacity);mix-blend-mode:overlay;
+  transition:opacity .6s var(--ease);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+#app{position:relative;z-index:1;}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+  html{scroll-behavior:auto;}
+}
+
+/* ===================== NAV ===================== */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px clamp(20px,5vw,60px);
+  transition:padding .5s var(--ease),background .5s var(--ease),border-color .5s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  padding:13px clamp(20px,5vw,60px);
+  background:color-mix(in srgb,var(--bg) 86%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.logo{font-family:var(--serif);font-size:1.4rem;font-weight:600;letter-spacing:-.01em;}
+.nav-right{display:flex;align-items:center;gap:clamp(14px,2.5vw,32px);}
+.nav-links{display:flex;gap:clamp(14px,2.5vw,30px);align-items:center;}
+.nav-links a{
+  font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text-soft);position:relative;transition:color .3s;
+}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:-5px;height:1.5px;width:0;
+  background:var(--accent);transition:width .35s var(--ease);
+}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{width:100%;}
+@media(max-width:680px){.nav-links{display:none;}}
+
+/* ---- THEME TOGGLE ---- */
+.theme-toggle{
+  position:relative;width:62px;height:32px;border-radius:999px;
+  border:1px solid var(--line-hi);background:var(--card);
+  cursor:pointer;padding:0;flex-shrink:0;
+  transition:background .5s var(--ease),border-color .5s;
+}
+.theme-toggle::before{
+  content:'';position:absolute;top:50%;left:4px;
+  width:24px;height:24px;border-radius:50%;
+  transform:translateY(-50%);
+  background:var(--accent);
+  box-shadow:0 0 0 0 var(--accent-soft);
+  transition:left .45s var(--ease),background .5s;
+  animation:toggle-pulse 2.4s var(--ease) infinite;
+}
+html[data-theme="dark"] .theme-toggle::before{left:34px;}
+@keyframes toggle-pulse{
+  0%,100%{box-shadow:0 0 0 0 var(--accent-soft);}
+  50%{box-shadow:0 0 0 7px transparent;}
+}
+/* periodic attention shake on the whole toggle */
+.theme-toggle.nudge{animation:toggle-shake .7s var(--ease);}
+@keyframes toggle-shake{
+  0%,100%{transform:translateX(0) rotate(0);}
+  15%{transform:translateX(-3px) rotate(-4deg);}
+  30%{transform:translateX(3px) rotate(4deg);}
+  45%{transform:translateX(-3px) rotate(-3deg);}
+  60%{transform:translateX(2px) rotate(2deg);}
+  75%{transform:translateX(-1px) rotate(-1deg);}
+}
+.theme-toggle .tip{
+  position:absolute;top:120%;right:0;white-space:nowrap;
+  font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text-faint);opacity:0;transform:translateY(-4px);
+  pointer-events:none;transition:opacity .4s,transform .4s;
+}
+.theme-toggle.nudge .tip{opacity:1;transform:translateY(0);}
+.theme-toggle .ic{
+  position:absolute;top:50%;transform:translateY(-50%);
+  font-size:.78rem;line-height:1;pointer-events:none;
+  transition:opacity .4s;
+}
+.theme-toggle .ic-sun{left:9px;opacity:0;}
+.theme-toggle .ic-moon{right:9px;opacity:1;}
+html[data-theme="dark"] .theme-toggle .ic-sun{opacity:1;}
+html[data-theme="dark"] .theme-toggle .ic-moon{opacity:0;}
+@media(prefers-reduced-motion:reduce){.theme-toggle::before{animation:none;}}
+
+/* ===================== LAYOUT ===================== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,44px);}
+.eyebrow{
+  font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--accent);font-weight:500;display:flex;align-items:center;gap:14px;
+}
+.eyebrow::before{content:'';width:34px;height:1.5px;background:var(--accent);}
+.section-head{margin-bottom:58px;}
+.section-head h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(2.1rem,4.6vw,3.4rem);
+  letter-spacing:-.022em;line-height:1.08;margin-top:18px;
+}
+
+/* ===================== HERO ===================== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,64px);align-items:center;width:100%;}
+.hero-tag{
+  font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--text-faint);margin-bottom:24px;display:flex;align-items:center;gap:12px;
+}
+.hero-tag::before{content:'';width:30px;height:1.5px;background:var(--text-faint);}
+.hero h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(2.7rem,6.4vw,5rem);line-height:1.02;
+  letter-spacing:-.03em;margin-bottom:24px;
+}
+.hero h1 em{font-style:italic;color:var(--accent);}
+.hero-sub{font-size:clamp(1rem,1.5vw,1.14rem);color:var(--text-soft);max-width:470px;margin-bottom:36px;line-height:1.72;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px;}
+.btn{
+  font-family:var(--sans);font-size:.86rem;font-weight:500;letter-spacing:.02em;
+  padding:14px 28px;border-radius:999px;cursor:pointer;border:none;
+  display:inline-flex;align-items:center;gap:9px;
+  transition:transform .35s var(--ease),background .35s,box-shadow .35s,border-color .3s,color .3s;
+}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 26px var(--accent-soft);}
+.btn-primary:hover{transform:translateY(-2px);background:var(--accent-deep);box-shadow:0 12px 34px var(--accent-soft);}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line-hi);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.hero-fields{display:flex;gap:10px;flex-wrap:wrap;}
+.field-chip{
+  font-size:.78rem;color:var(--text-soft);
+  border:1px solid var(--line);background:var(--card);
+  padding:7px 15px;border-radius:999px;
+}
+.hero-visual{position:relative;aspect-ratio:1/1;width:100%;max-width:430px;justify-self:center;}
+#hero-canvas{width:100%;height:100%;display:block;}
+@media(max-width:840px){
+  .hero-grid{grid-template-columns:1fr;gap:24px;}
+  .hero-visual{grid-row:1;max-width:280px;}
+  .hero-sub{max-width:none;}
+}
+
+/* ===================== ABOUT ===================== */
+.about{padding:clamp(80px,12vh,150px) 0;}
+.about-lead{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(1.45rem,3.1vw,2.2rem);line-height:1.4;
+  letter-spacing:-.018em;max-width:820px;
+}
+.about-lead .accent{font-style:italic;}
+.about-body{margin-top:40px;max-width:760px;}
+.about-body p{color:var(--text-soft);font-size:1.02rem;line-height:1.8;}
+.about-body p+p{margin-top:20px;}
+/* read-more expander (vertical) */
+.about-more{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .6s var(--ease),opacity .5s var(--ease),margin-top .5s var(--ease);
+  opacity:0;margin-top:0;
+}
+.about-more>div{overflow:hidden;}
+.about.expanded .about-more{grid-template-rows:1fr;opacity:1;margin-top:20px;}
+.read-more-btn{
+  margin-top:26px;background:none;border:none;cursor:pointer;
+  font-family:var(--sans);font-size:.86rem;font-weight:500;letter-spacing:.03em;
+  color:var(--accent);display:inline-flex;align-items:center;gap:8px;
+  text-transform:uppercase;transition:gap .3s var(--ease);
+}
+.read-more-btn:hover{gap:13px;}
+.read-more-btn svg{transition:transform .4s var(--ease);}
+.about.expanded .read-more-btn svg{transform:rotate(180deg);}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:62px;background:var(--card);}
+.stat{padding:32px 22px;text-align:center;border-right:1px solid var(--line);transition:background .4s;}
+.stat:last-child{border-right:none;}
+.stat:hover{background:var(--card-hi);}
+.stat-num, .stat-val{font-family:var(--serif);font-size:2.5rem;font-weight:500;color:var(--accent);}
+.stat-num .suf, .stat-val .suf{font-size:1.4rem;}
+.stat-label{font-size:.73rem;letter-spacing:.11em;text-transform:uppercase;color:var(--text-faint);margin-top:6px;}
+@media(max-width:620px){
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .stat:nth-child(2){border-right:none;}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line);}
+}
+
+/* ===================== EXPERTISE / SPECIALITY ===================== */
+.expertise{padding:clamp(80px,12vh,150px) 0;}
+.exp-stack{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card);}
+.exp-row{
+  padding:38px clamp(24px,4vw,46px);
+  display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:start;
+  border-bottom:1px solid var(--line);transition:background .4s var(--ease);
+}
+.exp-row:last-child{border-bottom:none;}
+.exp-row:hover{background:var(--card-hi);}
+.exp-num{font-family:var(--serif);font-size:2.2rem;font-weight:400;color:var(--text-faint);line-height:1;transition:color .4s;}
+.exp-row:hover .exp-num{color:var(--accent);}
+.exp-main h3{font-family:var(--serif);font-weight:500;font-size:1.55rem;letter-spacing:-.012em;margin-bottom:9px;}
+.exp-main p{color:var(--text-soft);font-size:.96rem;line-height:1.66;max-width:640px;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.exp-tag{font-size:.73rem;color:var(--text-soft);border:1px solid var(--line);padding:5px 12px;border-radius:999px;}
+@media(max-width:600px){.exp-row{grid-template-columns:1fr;gap:12px;}}
+
+/* ===================== TECH STACK ===================== */
+.stack{padding:clamp(80px,12vh,150px) 0;}
+.stack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+.stack-group{background:var(--card);padding:28px 26px;transition:background .4s;}
+.stack-group:hover{background:var(--card-hi);}
+.stack-group h4{font-family:var(--serif);font-weight:500;font-size:1.05rem;color:var(--accent);margin-bottom:14px;}
+.stack-chips{display:flex;flex-wrap:wrap;gap:7px;}
+.stack-chip{font-size:.76rem;color:var(--text-soft);border:1px solid var(--line-hi);padding:5px 12px;border-radius:8px;}
+@media(max-width:760px){.stack-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.stack-grid{grid-template-columns:1fr;}}
+
+/* ===================== SERVICES ===================== */
+.services{padding:clamp(80px,12vh,150px) 0;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.service{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:34px 30px;transition:border-color .4s var(--ease),transform .4s var(--ease),background .4s;
+}
+.service:hover{border-color:var(--line-hi);transform:translateY(-4px);background:var(--card-hi);}
+.service-num{font-family:var(--serif);font-size:1.1rem;color:var(--accent);}
+.service h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;letter-spacing:-.012em;margin:14px 0 12px;line-height:1.2;}
+.service p{color:var(--text-soft);font-size:.92rem;line-height:1.68;margin-bottom:18px;}
+.service-points{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.service-points li{font-size:.84rem;color:var(--text);padding-left:18px;position:relative;}
+.service-points li::before{content:'';position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--accent);}
+@media(max-width:820px){.services-grid{grid-template-columns:1fr;}}
+
+/* ===================== PROJECTS ===================== */
+.projects{padding:clamp(80px,12vh,150px) 0;position:relative;}
+.constellation-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.projects .wrap{position:relative;z-index:1;}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:900px){.proj-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.proj-grid{grid-template-columns:1fr;}}
+.proj{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .4s var(--ease),transform .4s var(--ease),box-shadow .4s;
+}
+.proj:hover{border-color:var(--line-hi);transform:translateY(-5px);box-shadow:0 22px 50px var(--shadow);}
+.proj-shot{aspect-ratio:16/10;overflow:hidden;background:var(--bg-soft);border-bottom:1px solid var(--line);}
+.proj-shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);}
+.proj:hover .proj-shot img{transform:scale(1.05);}
+.proj-body{padding:24px;display:flex;flex-direction:column;flex:1;}
+.proj-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.proj-cat{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+.proj-num{font-family:var(--serif);color:var(--text-faint);font-size:.95rem;}
+.proj h3{font-family:var(--serif);font-weight:500;font-size:1.25rem;letter-spacing:-.012em;margin-bottom:9px;}
+.proj p{color:var(--text-soft);font-size:.88rem;line-height:1.6;flex:1;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0;}
+.proj-tag{font-size:.68rem;color:var(--text-soft);border:1px solid var(--line);padding:3px 9px;border-radius:999px;}
+.proj-link{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:500;color:var(--text);transition:gap .3s var(--ease),color .3s;}
+.proj-link:hover{gap:12px;color:var(--accent);}
+.proj-note{margin-top:52px;text-align:center;font-size:.95rem;color:var(--text-faint);}
+.proj-note strong{display:block;margin-top:8px;font-weight:500;color:var(--accent);font-family:var(--serif);font-size:1.15rem;letter-spacing:-.01em;}
+
+/* ===================== CONTACT ===================== */
+.contact{padding:clamp(80px,12vh,150px) 0;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,6vw,74px);align-items:start;}
+@media(max-width:720px){.contact-grid{grid-template-columns:1fr;gap:42px;}}
+.contact-lead{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3.5vw,2.5rem);line-height:1.26;letter-spacing:-.02em;margin-bottom:30px;}
+.contact-lead em{font-style:italic;color:var(--accent);}
+.contact-links{display:flex;flex-direction:column;gap:14px;}
+.contact-link{display:flex;align-items:center;gap:13px;color:var(--text-soft);font-size:.97rem;transition:color .3s;}
+.contact-link:hover{color:var(--accent);}
+.contact-link .ic{
+  width:36px;height:36px;border:1px solid var(--line);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;
+  color:var(--text-faint);flex-shrink:0;transition:border-color .3s,color .3s,background .3s;font-weight:500;
+}
+.contact-link:hover .ic{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+.form-field{position:relative;margin-bottom:32px;}
+.form-field input,.form-field textarea{
+  width:100%;background:transparent;border:none;border-bottom:1px solid var(--line-hi);
+  padding:12px 0;font-family:var(--sans);font-size:1rem;font-weight:300;color:var(--text);
+  outline:none;transition:border-color .3s;
+}
+.form-field textarea{resize:vertical;min-height:90px;}
+.form-field input:focus,.form-field textarea:focus{border-color:var(--accent);}
+.form-field label{
+  position:absolute;left:0;top:12px;color:var(--text-faint);font-size:.95rem;
+  pointer-events:none;transition:all .3s var(--ease);
+}
+.form-field input:focus+label,.form-field input:not(:placeholder-shown)+label,
+.form-field textarea:focus+label,.form-field textarea:not(:placeholder-shown)+label{
+  top:-13px;font-size:.71rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+}
+.btn-submit{width:100%;justify-content:center;padding:16px;font-size:.92rem;}
+.form-status{margin-top:14px;font-size:.86rem;min-height:1.2em;}
+.form-status.ok{color:#3f9d5f;}
+.form-status.err{color:var(--accent);}
+
+/* ===================== FOOTER ===================== */
+footer{border-top:1px solid var(--line);padding:36px clamp(20px,5vw,44px);}
+.footer-in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+.footer-in .logo{font-size:1.15rem;}
+.footer-in .copy{font-size:.8rem;color:var(--text-faint);}
+.footer-soc{display:flex;gap:10px;}
+.footer-soc a{font-size:.72rem;letter-spacing:.05em;color:var(--text-faint);border:1px solid var(--line);padding:8px 13px;border-radius:9px;transition:border-color .3s,color .3s;}
+.footer-soc a:hover{border-color:var(--accent);color:var(--accent);}
+</style>
 </head>
 <body>
+<div id="app">
 
-    <!-- ===== PRELOADER ===== -->
-    <div id="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-line"></div>
-            <span class="preloader-text">Welcome to my portfolio site</span>
-            <span class="preloader-subtext">Design. Code. Motion.</span>
-        </div>
+<nav id="nav">
+  <a href="#top" class="logo">Ehsan<span class="accent">.</span></a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#speciality">Speciality</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+      <span class="ic ic-sun">☀</span>
+      <span class="ic ic-moon">☾</span>
+      <span class="tip">Try me</span>
+    </button>
+  </div>
+</nav>
 
-    <!-- ===== CUSTOM CURSOR ===== -->
-    <div id="cursor-dot"></div>
-    <div id="cursor-ring"></div>
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="hero-tag reveal">Full-Stack Developer</div>
+      <h1 class="reveal">Hi, I'm <em>Ehsan</em>.</h1>
+      <p class="hero-sub reveal">I'm a Full-Stack Developer who likes the hard problems. SaaS platforms, AI products, the occasional thing nobody has built before. If it can be reasoned through and shipped, I want to be the one building it.</p>
+      <div class="hero-cta reveal">
+        <a href="#projects" class="btn btn-primary">
+          View my work
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="hero-fields reveal">
+        <span class="field-chip">Web Development</span>
+        <span class="field-chip">AI &amp; Automation</span>
+        <span class="field-chip">Cybersecurity</span>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <canvas id="hero-canvas"></canvas>
+    </div>
+  </div>
+</section>
 
-    <!-- ===== NAVIGATION ===== -->
-    <nav id="navbar">
-        <a href="#hero" class="nav-logo magnetic">E<span class="accent">.</span></a>
-        <div class="nav-links">
-            <a href="#about" class="nav-link magnetic">About</a>
-            <a href="#skills" class="nav-link magnetic">Skills</a>
-            <a href="#projects" class="nav-link magnetic">Projects</a>
-            <a href="#contact" class="nav-link nav-link--cta magnetic">Contact</a>
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">About</span></div>
+    <p class="about-lead reveal">I bring strong critical thinking and solid foundations across software architecture, system design and core programming, paired with a genuine curiosity for the corners of computing most developers never explore. I believe <span class="accent">it all connects in the end.</span></p>
+    <div class="about-body reveal">
+      <p>My work spans the full development cycle. I architect and build complete web applications with React, Next.js and Node.js, write clean backend logic, and make sure everything that ships is fast, scalable and built to last. I'm fluent across Python, C++, C# and .NET too, and I reach for whatever the problem actually needs rather than defaulting to a favourite stack out of comfort.</p>
+      <div class="about-more"><div>
+        <p>On the AI side, I don't just wire up an API and call it intelligent. I build and train models. For a house price predictor aimed at the Islamabad market, clean local data simply didn't exist, so I generated and calibrated my own from scratch. That ground-up, figure-it-out instinct is the thread through everything I build. A background in security also means I think about how a system breaks before I think about how it ships. If you're working on something ambitious, I'm interested.</p>
+      </div></div>
+      <button class="read-more-btn" id="read-more" aria-expanded="false">
+        <span class="rm-label">Read more</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="stat-num" data-count="40"><span class="suf">+</span></div><div class="stat-label">Projects Delivered</div></div>
+      <div class="stat"><div class="stat-num" data-count="6"><span class="suf">+</span></div><div class="stat-label">Years Coding</div></div>
+      <div class="stat"><div class="stat-num" data-count="15"><span class="suf">+</span></div><div class="stat-label">Tech Mastered</div></div>
+      <div class="stat"><div class="stat-val">∞</div><div class="stat-label">Cups of Coffee</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPECIALITY ===== -->
+<section class="expertise" id="speciality">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">My speciality</span>
+      <h2>My Specialities.</h2>
+    </div>
+    <div class="exp-stack">
+      <div class="exp-row reveal">
+        <div class="exp-num">01</div>
+        <div class="exp-main">
+          <h3>Full-Stack Web Development</h3>
+          <p>Custom websites and web applications built end to end, with responsive front ends, clean APIs and databases designed to scale. From focused business sites to full SaaS-style platforms.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">React</span><span class="exp-tag">Next.js</span><span class="exp-tag">Node.js</span>
+            <span class="exp-tag">NestJS</span><span class="exp-tag">.NET Core</span><span class="exp-tag">PostgreSQL</span>
+            <span class="exp-tag">MySQL</span><span class="exp-tag">WordPress</span>
+          </div>
         </div>
-    </nav>
-
-    <!-- ===== MAIN CONTENT ===== -->
-    <main id="main-wrapper">
-
-        <!-- HERO SECTION -->
-        <section id="hero" class="section">
-            <div class="hero-vignette"></div>
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="hero-title-line"><span class="hero-title-word">Hi, I'm Ehsan</span></span>
-                    </h1>
-                    <p class="hero-subtitle">I am a full stack developer providing SAAS and Smart AI solutions to my clients. And for the mandatory introductory part: <strong>I love to prove people wrong!</strong> 😎</p>
-                    <div class="hero-meta" aria-label="Quick profile highlights">
-                        <span class="hero-meta-item">Full-Stack Developer</span>
-                        <span class="hero-meta-item">AI & ML Solutions</span>
-                        <span class="hero-meta-item">Cybersecurity Enthusiast</span>
-                    </div>
-                    <div class="hero-cta-group">
-                        <a href="#projects" class="btn btn-primary magnetic" id="btn-explore">
-                            <span>Explore Work</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                        <a href="#contact" class="btn btn-ghost magnetic" id="btn-contact">Get In Touch</a>
-                    </div>
-                </div>
-                <div class="hero-image-container" id="hero-tilt">
-                    <div class="hero-image-glow"></div>
-                    <img src="assets/hero.png" alt="Chess piece representing strategic creative vision" class="hero-image" id="hero-img" width="1024" height="1024" loading="eager" fetchpriority="high" decoding="async">
-                    <div class="hero-image-reflection"></div>
-                </div>
-            </div>
-            <a href="#about" class="scroll-indicator magnetic" id="scroll-indicator" aria-label="Scroll to About section">
-                <div class="mouse-icon">
-                    <div class="mouse-wheel"></div>
-                </div>
-                <span class="scroll-text">Discover More</span>
-            </a>
-        </section>
-
-        <!-- ABOUT SECTION -->
-        <section id="about" class="section">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="section-number">01</span>
-                    <h2 class="section-title">About <span class="accent">Me</span></h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p class="about-lead">I might look like a narcissist, but that's what makes me, ME! I have a considerable amount of Critical Thinking so I get to solutions faster, perfectly paired with my solid foundations across software architecture, system design, and core programming. Beyond that, I have a genuine curiosity about Computing fields most developers never bother to look at—Security, emerging tech, AI, and startups—because I am a huge believer that <strong>IT ALL CONNECTS AT THE END.</strong></p>
-                        <p>My work spans the full development cycle. On the engineering side, I architect and build complete web applications using Next.js and NestJS, write clean backend logic, and make sure everything that goes out the door is fast, scalable, and built to last. I'm fluent in Python, C++, C#, and Node.js, and I reach for whatever the problem actually needs rather than defaulting to a favourite stack out of comfort.</p>
-                        <p>On the AI side, I don't just connect APIs and call it intelligent. I build and train models. When I built a house price predictor for the Islamabad real estate market, clean local data didn't exist, so I generated and calibrated my own synthetic training data from scratch. That kind of ground-up problem solving is where I'm most comfortable.</p>
-                        <p>Beyond standard development, I have a strong background in cybersecurity, having completed a Threat Intelligence internship at a national cybersecurity institute in Pakistan. There I worked on detecting and analyzing real threats at a national level, not sandboxed exercises. That experience permanently changed how I think about building software. Security is not something you add before launch. It is an architectural decision you make on day one.</p>
-                        <p>Right now I'm actively exploring two areas I believe will define the next decade of computing: <span class="accent">Large Language Models</span>, not as a user but as a builder, and <span class="accent">Quantum Computing</span>, which I'm studying at the conceptual and mathematical level. Both represent exactly the kind of long-bet, high-difficulty problems that got me into this field in the first place.</p>
-                        <p><strong>If you're working on something ambitious, I'm interested.</strong></p>
-                    </div>
-                    <div class="about-image-container" id="about-img-tilt">
-                        <img src="assets/about_3d.png" alt="3D Abstract geometric shape" class="about-image" width="1024" height="1024" loading="lazy" decoding="async">
-                        <div class="cyber-btn-wrapper">
-                            <a href="#cybersecurity" class="btn btn-primary cyber-btn btn-breathe">The Other Side of My Stack</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FULL WIDTH SINGLE LINE STATS -->
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="25">0</span><span class="stat-suffix">+</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="3">0</span><span class="stat-suffix">+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="13">0</span><span class="stat-suffix"></span>
-                        <span class="stat-label">Happy Clients</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-count="100">0</span><span class="stat-suffix">K+</span>
-                        <span class="stat-label">Lines of Code</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- SKILLS SECTION -->
-        <section id="skills" class="section">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="section-number">02</span>
-                    <h2 class="section-title">My <span class="accent">Skills</span></h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill-card"><div class="skill-icon">💻</div><h3 class="skill-name">Languages</h3><p class="project-desc">Python, C++, C#, Node.js</p><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
-                    <div class="skill-card"><div class="skill-icon">⚛️</div><h3 class="skill-name">Frameworks</h3><p class="project-desc">React, Next.js, NestJS, .NET Core</p><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
-                    <div class="skill-card"><div class="skill-icon">🌐</div><h3 class="skill-name">Full-Stack</h3><p class="project-desc">Architecture & Scalable Integration</p><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
-                    <div class="skill-card"><div class="skill-icon">🔒</div><h3 class="skill-name">Security</h3><p class="project-desc">Networking & Cyber Threat Intel</p><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
-                    <div class="skill-card"><div class="skill-icon">🧠</div><h3 class="skill-name">AI / ML</h3><p class="project-desc">Model Integration & Future Tech</p><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
-                    <div class="skill-card"><div class="skill-icon">⚛️</div><h3 class="skill-name">.NET Framework</h3><p class="project-desc">Desktop Apps & Architecture</p><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECTS SECTION -->
-        <section id="projects" class="section">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="section-number">03</span>
-                    <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card" id="project-1">
-                        <div class="project-image">
-                            <img src="assets/ChatGPT%20Image%20Mar%2011,%202026,%2012_33_12%20AM.png" alt="Hire-Craft" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">Full-Stack</span><span class="project-tag">Automation</span></div>
-                            <h3 class="project-title">Hire-Craft</h3>
-                            <p class="project-desc">Most recruitment is still a mess of spreadsheets, email threads, and missed follow-ups. Hire-Craft is a platform I co-built to fix exactly that. It automates screening, applicant tracking, and scheduling so that the people doing the hiring can focus on the actual decision and not the admin work surrounding it.</p>
-                        </div>
-                    </div>
-                    <!-- Project 2 -->
-                    <div class="project-card" id="project-2">
-                        <div class="project-image">
-                            <img src="assets/proj_houseprice2_1775422631036.png" alt="House Price Predictor" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">AI/ML</span><span class="project-tag">Python</span><span class="project-tag">Regression</span></div>
-                            <h3 class="project-title">House Price Predictor</h3>
-                            <p class="project-desc">A regression model built specifically for the Islamabad real estate market. The core challenge here was never the model itself. It was the data. Clean, labeled property data for Pakistani cities simply does not exist, so I generated and calibrated my own synthetic training data based on local pricing patterns. The result is a predictor that reflects how this market actually behaves, not how a generic dataset assumes it does.</p>
-                        </div>
-                    </div>
-                    <!-- Project 3 -->
-                    <div class="project-card" id="project-3">
-                        <div class="project-image">
-                            <img src="assets/proj_parking2_1775422645850.png" alt="Smart Car Parking" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">AI/ML</span><span class="project-tag">Image Processing</span></div>
-                            <h3 class="project-title">Smart Car Parking System</h3>
-                            <p class="project-desc">A real-time computer vision system built for shopping mall parking management. Live camera feeds run through an image processing pipeline that identifies available spaces and directs vehicle flow automatically. No manual counting, no attendant required. Built to run reliably under variable lighting and camera angles.</p>
-                        </div>
-                    </div>
-                    <!-- Project 4 -->
-                    <div class="project-card" id="project-4">
-                        <div class="project-image">
-                            <img src="assets/proj_spamrok2_1775422660501.png" alt="Spam-Rok" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">AI/ML</span><span class="project-tag">NLP</span><span class="project-tag">Cybersecurity</span></div>
-                            <h3 class="project-title">Spam-Rok</h3>
-                            <p class="project-desc">An intelligent spam classifier designed to catch the specific patterns of unwanted messaging in the Pakistani digital context, a mix of Urdu, Roman Urdu, and English that generic spam filters handle poorly. "Rok" means stop in Urdu. The name is the mission statement.</p>
-                        </div>
-                    </div>
-                    <!-- Project 5 -->
-                    <div class="project-card" id="project-5">
-                        <div class="project-image">
-                            <img src="assets/proj_keylogger2_1775422676065.png" alt="Keylogger Detector" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">Cybersecurity</span><span class="project-tag">Windows</span></div>
-                            <h3 class="project-title">Real-time Keylogger Detector</h3>
-                            <p class="project-desc">A Windows security utility that monitors running processes for unauthorized keystroke logging behaviour. When a threat is detected, it alerts the user and attempts to terminate the process before any data leaves the machine. Built out of frustration with how unprotected most personal Windows setups are against this specific and very common attack vector.</p>
-                        </div>
-                    </div>
-                    <!-- Project 6 -->
-                    <div class="project-card" id="project-6">
-                        <div class="project-image">
-                            <img src="assets/proj_fileintegrity2_1775422690195.png" alt="File Integrity Checker" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">Cybersecurity</span><span class="project-tag">Hashing</span></div>
-                            <h3 class="project-title">File Integrity Checker</h3>
-                            <p class="project-desc">A utility that uses cryptographic hashing to monitor files for unauthorized changes. It generates hash baselines on first run, then flags any file whose hash deviates from that baseline, catching tampering, corruption, or unauthorized modifications that would otherwise go completely unnoticed. Simple in concept, genuinely useful in practice.</p>
-                        </div>
-                    </div>
-                    <!-- Project 7 -->
-                    <div class="project-card" id="project-7">
-                        <div class="project-image">
-                            <img src="assets/proj_lms2_1775422703961.png" alt="LMS for Private Schools" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">Full-Stack</span><span class="project-tag">Education</span></div>
-                            <h3 class="project-title">LMS for Private Schools</h3>
-                            <p class="project-desc">A full learning management system built for the administrative and academic needs of private schools, handling everything from attendance and grading to teacher-student communication and curriculum tracking. Designed for institutions that need the power of an enterprise LMS without the enterprise price tag or the enterprise setup complexity.</p>
-                        </div>
-                    </div>
-                    <!-- Project 8 -->
-                    <div class="project-card" id="project-8">
-                        <div class="project-image">
-                            <img src="assets/proj_billsplitter_1775422166115.png" alt="Hostel Bill Splitter" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">Full-Stack</span><span class="project-tag">Web App</span></div>
-                            <h3 class="project-title">Hostel Bill Splitter</h3>
-                            <p class="project-desc">A web app that does exactly what shared living requires: fairly splitting and tracking shared expenses between multiple residents. It handles recurring bills, one-off costs, partial payments, and running balances, removing the mental overhead and occasional awkwardness of keeping track of who owes what.</p>
-                        </div>
-                    </div>
-                    <!-- Project 9 -->
-                    <div class="project-card" id="project-9">
-                        <div class="project-image">
-                            <img src="assets/proj_textextraction_1775422181151.png" alt="Offline Text Extraction" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">Desktop App</span><span class="project-tag">OCR</span></div>
-                            <h3 class="project-title">Offline Text Extraction App</h3>
-                            <p class="project-desc">A desktop OCR utility that extracts text from images entirely on-device. No internet connection, no cloud upload, no account required. Built for situations where privacy matters or reliable connectivity cannot be assumed. Useful for digitizing documents, receipts, or handwritten notes without sending them anywhere you did not intend.</p>
-                        </div>
-                    </div>
-                    <!-- Project 10 -->
-                    <div class="project-card" id="project-10">
-                        <div class="project-image">
-                            <img src="assets/proj_library_1775422195009.png" alt="Library Management" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">Full-Stack</span><span class="project-tag">System</span></div>
-                            <h3 class="project-title">Library Management System</h3>
-                            <p class="project-desc">A fully functional system for cataloging, issuing, and tracking library resources, handling member management, due dates, fines, and inventory in one place. Designed to replace the paper-based or spreadsheet-driven systems that most small libraries still rely on, with an interface straightforward enough that non-technical staff can operate it without training.</p>
-                        </div>
-                    </div>
-                    <!-- Project 11 -->
-                    <div class="project-card" id="project-11">
-                        <div class="project-image">
-                            <img src="assets/proj_forecast_1775422208845.png" alt="Weather Forecast App" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">Web App</span><span class="project-tag">API Integration</span></div>
-                            <h3 class="project-title">Weather Forecast App</h3>
-                            <p class="project-desc">A real-time weather application pulling live atmospheric data through API integration and presenting it through a clean, readable interface. Built as much as a study in API architecture and real-time data handling as a practical tool. Understanding how live data pipelines behave under different network conditions directly informed how I approach data-dependent systems in general.</p>
-                        </div>
-                    </div>
-                    <!-- Project 12 -->
-                    <div class="project-card" id="project-12">
-                        <div class="project-image">
-                            <img src="assets/resume%20builder.png" alt="AI NLP Resume Builder" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">AI / NLP</span><span class="project-tag">Full-Stack</span></div>
-                            <h3 class="project-title">AI Resume Builder</h3>
-                            <p class="project-desc">A highly dynamic resume generator driven by Natural Language Processing. Instead of manually filling out tedious forms, users provide a raw prompt or unstructured text about their experience, and the NLP engine intelligently extracts, formats, and dynamically designs a professional, fully-structured resume. It physically builds the document around the context of your career.</p>
-                        </div>
-                    </div>
-                    <!-- Project 13 -->
-                    <div class="project-card" id="project-13">
-                        <div class="project-image">
-                            <img src="assets/invoice.png" alt="Dynamic Invoice Generator" class="project-img-bg" width="1024" height="1024" loading="lazy" decoding="async">
-                            <div class="project-overlay"><span class="project-view">View Project →</span></div>
-                        </div>
-                        <div class="project-info">
-                            <div class="project-tags"><span class="project-tag">Full-Stack</span><span class="project-tag">Financial / SAAS</span></div>
-                            <h3 class="project-title">Dynamic Invoice Generator</h3>
-                            <p class="project-desc">A highly specialized financial utility designed for freelancers and B2B contractors. It bypasses massive accounting software by letting users directly compile line items, instantly calculate complex regional tax brackets, and rapidly generate standardized, highly professional PDF invoices. Built with strict calculation architecture to ensure zero float-point errors during financial rendering.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="section">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="section-number">04</span>
-                    <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
-                    <div class="section-line"></div>
-                </div>
-                <div class="contact-grid">
-                    <div class="contact-text">
-                        <p class="contact-lead">Have a project in mind? Let's create something extraordinary together.</p>
-                        <div class="contact-links">
-                            <a href="mailto:ehsan@example.com" class="contact-link"><span class="contact-link-icon">✉</span><span>ehsan@example.com</span></a>
-                            <a href="#" class="contact-link"><span class="contact-link-icon">🔗</span><span>linkedin.com/in/ehsan</span></a>
-                            <a href="#" class="contact-link"><span class="contact-link-icon">🐙</span><span>github.com/ehsan</span></a>
-                        </div>
-                    </div>
-                    <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="97f46f3a-5558-4f11-a714-80f0ed6883da">
-                        <input type="hidden" name="subject" value="🚀 New Premium Inquiry From Your Portfolio">
-                        <input type="hidden" name="from_name" value="Ehsan's 3D Portfolio">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
-                            <label for="name" class="form-label">Your Name</label>
-                            <div class="form-line"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
-                            <label for="email" class="form-label">Your Email</label>
-                            <div class="form-line"></div>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" class="form-input form-textarea" placeholder=" " required></textarea>
-                            <label for="message" class="form-label">Your Message</label>
-                            <div class="form-line"></div>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-submit" id="btn-submit">
-                            <span>Send Message</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer id="footer">
-        <div class="footer-inner">
-            <span class="footer-logo">E<span class="accent">.</span></span>
-            <span class="footer-text">© 2026 Ehsan. All rights reserved.</span>
-            <div class="footer-socials">
-                <a href="#" class="footer-social" aria-label="GitHub">GH</a>
-                <a href="#" class="footer-social" aria-label="LinkedIn">LI</a>
-                <a href="#" class="footer-social" aria-label="Twitter">TW</a>
-            </div>
+      </div>
+      <div class="exp-row reveal">
+        <div class="exp-num">02</div>
+        <div class="exp-main">
+          <h3>AI &amp; Automation</h3>
+          <p>Practical, applied AI: chatbots, AI-driven features and automation workflows that remove repetitive manual work, plus custom models trained from the ground up when a project genuinely calls for one.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">LLM Integration</span><span class="exp-tag">AI Chatbots</span>
+            <span class="exp-tag">Workflow Automation</span><span class="exp-tag">Python</span>
+            <span class="exp-tag">NLP</span><span class="exp-tag">Machine Learning</span>
+          </div>
         </div>
-    </footer>
-
-    <!-- CYBERSECURITY SECTION (MODAL) -->
-    <div id="cybersecurity-modal" class="cyber-modal-overlay">
-        
-        <div class="cyber-scroll-wrapper" id="cyber-scroller" data-lenis-prevent="true">
-            <div class="cyber-modal-content glass-panel">
-                <div class="section-inner">
-                    <div class="section-header">
-                        <span class="section-number">🔒</span>
-                        <h2 class="section-title">The Other Side of My <span class="accent">Stack</span></h2>
-                        <div class="section-line"></div>
-                    </div>
-                
-                    <div class="cyber-container">
-                        <div class="cyber-intro">
-                            <h3>How It Started</h3>
-                            <p>When I started my degree, I wasn't planning to become a full-stack developer. I wanted to be a cybersecurity specialist. For the first two and a half years of my graduation, that was the plan and I committed to it completely. I studied every cyber-related subject harder than anything else, went beyond the curriculum with self-study, and that grind is what eventually earned me an internship at a national-level institute in Pakistan where I worked in Threat Intelligence, learning firsthand how real threats are detected, analyzed, and dealt with at a national scale.</p>
-                            <p>But somewhere in that journey, my curiosity toward AI and full-stack development kept growing louder. So I made a call, pivoted completely, and poured everything into that instead. It became my sole passion and it is what I do now. That said, two and a half years of serious work does not just disappear. Cybersecurity is still something I follow as a hobby and if you asked me to switch back tomorrow, it would not take long. That chapter shaped how I think about systems permanently.</p>
-                        </div>
-
-                        <div class="cyber-grid">
-                            <div class="cyber-col">
-                                <h3>What I Actually Know</h3>
-                                <p class="cyber-subtitle">This is not surface-level familiarity. I spent years building genuine depth across the full spectrum of cybersecurity concepts.</p>
-                                
-                                <div class="cyber-block">
-                                    <h4>Networking and Protocols</h4>
-                                    <p>My foundation starts at the network layer. I have strong command over the OSI Model and TCP/IP Stack, subnetting and CIDR notation, and how traffic actually moves through systems. I understand DNS Security through DNSSEC, DHCP Snooping, ARP Spoofing, and the full mechanics of HTTP/S alongside SSL/TLS handshakes. I have used Wireshark for packet sniffing and traffic analysis, which taught me more about how networks behave under pressure than any textbook could.</p>
-                                </div>
-
-                                <div class="cyber-block">
-                                    <h4>Cryptography and Identity</h4>
-                                    <p>I understand both symmetric and asymmetric encryption, hashing algorithms including SHA-256 and MD5, cryptographic salting and peppering, and the full structure of Public Key Infrastructure. On the identity side I am well versed in Identity and Access Management, Multi-Factor Authentication, the Principle of Least Privilege, and the mechanics of OAuth 2.0 and API Security.</p>
-                                </div>
-
-                                <div class="cyber-block">
-                                    <h4>Threats, Attacks and Defenses</h4>
-                                    <p>I know how attacks are structured and how they are stopped. I have studied the Cyber Kill Chain and the MITRE ATT&CK Framework in depth. My knowledge of offensive techniques covers SQL Injection, Cross-Site Scripting, Cross-Site Request Forgery, Man-in-the-Middle attacks, Buffer Overflow vulnerabilities, Social Engineering including phishing and pretexting, DoS and DDoS mitigation strategies, and the basics of Reverse Engineering and Malware Analysis both static and dynamic.</p>
-                                    <p>On the defensive side I understand firewalls across stateless, stateful, and next-generation implementations, Intrusion Detection and Prevention Systems, Zero Trust Architecture, Network Segmentation and DMZs, VPNs through both IPsec and SSL, SIEM platforms, Endpoint Detection and Response, and Data Loss Prevention.</p>
-                                </div>
-
-                                <div class="cyber-block">
-                                    <h4>Secure Development</h4>
-                                    <p>Security in software is something I think about from the design stage, not the deployment stage. I have strong familiarity with the OWASP Top 10, Secure Software Development Lifecycle principles, Linux hardening and permissions, Windows Registry and Event Logs, Active Directory Security and Kerberos, and using Python for security automation. I also understand Container Security across Docker and Kubernetes environments, Cloud Security through the Shared Responsibility Model, Wireless Security standards including WPA2 and WPA3, and the basics of IoT Security and Firmware Analysis.</p>
-                                </div>
-
-                                <div class="cyber-block">
-                                    <h4>Governance and Compliance</h4>
-                                    <p>I have studied the NIST Cybersecurity Framework, ISO/IEC 27001 standards, Governance Risk and Compliance principles, Business Continuity and Disaster Recovery planning, Incident Response phases, and Digital Forensics including Chain of Custody procedures. Vulnerability Assessment versus Penetration Testing is a distinction I understand both conceptually and practically.</p>
-                                </div>
-                            </div>
-
-                            <div class="cyber-col">
-                                <h3>Real Field Experience</h3>
-                                <div class="cyber-block highlight-block">
-                                    <h4>Internship</h4>
-                                    <p>Completed a Cybersecurity Threat Intelligence internship at a national institute in Pakistan, where I gained hands-on experience in how threats are detected, analyzed, and dealt with at a national level. Working in a real threat intelligence environment rather than a simulated one is an experience that very few people at my stage of career have had, and it remains one of the most formative things I have done.</p>
-                                </div>
-
-                                <h3>Security Projects</h3>
-                                <div class="cyber-block card-block">
-                                    <h4>Real-time Keylogger Detector</h4>
-                                    <p>A Windows security tool built to detect and neutralize unauthorized keystroke logging in real time. When a keylogger process is identified, the tool alerts the user and attempts to terminate the threat before any data is captured or exfiltrated.</p>
-                                </div>
-                                <div class="cyber-block card-block">
-                                    <h4>Spam-Rok</h4>
-                                    <p>An intelligent spam message detector designed to identify and filter malicious and unwanted communications. Built to handle the specific linguistic patterns of the Pakistani digital context including Urdu, Roman Urdu, and English, which most generic spam filters fail to catch reliably.</p>
-                                </div>
-                                <div class="cyber-block card-block">
-                                    <h4>File Integrity Checker</h4>
-                                    <p>A utility that uses cryptographic hashing to establish file baselines and monitor for any unauthorized changes. Any deviation from the stored hash triggers an alert, catching tampering or corruption that would otherwise go undetected silently.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cyber-outro">
-                            <h3>Why It Still Matters</h3>
-                            <p>Cybersecurity is not what I sell. But it is part of what makes me a more careful, more aware, and frankly more dangerous builder than someone who never went down that road. When I architect a SaaS platform or build an AI system, that two and a half years is already in the room with me. It is why I think about how a system breaks before I think about how it ships.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="exp-row reveal">
+        <div class="exp-num">03</div>
+        <div class="exp-main">
+          <h3>Security-Minded Engineering</h3>
+          <p>Security woven in from the start. I treat it as a design decision made on day one: secure data handling, sane authentication and an eye for how a system breaks, never a checkbox before launch.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">OWASP Top 10</span><span class="exp-tag">Secure SDLC</span>
+            <span class="exp-tag">API Security</span><span class="exp-tag">Network Security</span>
+          </div>
         </div>
-        
-        <!-- PURE SVG CLOSE BUTTON - GUARANTEED ON TOP -->
-        <button id="close-cyber-modal" class="cyber-close-btn" aria-label="Close modal">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECH STACK ===== -->
+<section class="stack" id="stack">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Tech stack</span>
+      <h2>The tools I build with.</h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-group reveal">
+        <h4>Languages</h4>
+        <div class="stack-chips"><span class="stack-chip">JavaScript</span><span class="stack-chip">TypeScript</span><span class="stack-chip">Python</span><span class="stack-chip">C#</span><span class="stack-chip">C++</span></div>
+      </div>
+      <div class="stack-group reveal">
+        <h4>Frontend</h4>
+        <div class="stack-chips"><span class="stack-chip">React</span><span class="stack-chip">Next.js</span><span class="stack-chip">HTML/CSS</span><span class="stack-chip">Tailwind</span></div>
+      </div>
+      <div class="stack-group reveal">
+        <h4>Backend</h4>
+        <div class="stack-chips"><span class="stack-chip">Node.js</span><span class="stack-chip">NestJS</span><span class="stack-chip">.NET Core</span><span class="stack-chip">REST APIs</span></div>
+      </div>
+      <div class="stack-group reveal">
+        <h4>Data</h4>
+        <div class="stack-chips"><span class="stack-chip">PostgreSQL</span><span class="stack-chip">MySQL</span><span class="stack-chip">Database Design</span></div>
+      </div>
+      <div class="stack-group reveal">
+        <h4>AI &amp; ML</h4>
+        <div class="stack-chips"><span class="stack-chip">LLM Integration</span><span class="stack-chip">NLP</span><span class="stack-chip">Computer Vision</span><span class="stack-chip">Model Training</span></div>
+      </div>
+      <div class="stack-group reveal">
+        <h4>Tools</h4>
+        <div class="stack-chips"><span class="stack-chip">Git</span><span class="stack-chip">WordPress</span><span class="stack-chip">Linux</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What I can build for you</span>
+      <h2>Services.</h2>
+    </div>
+    <div class="services-grid">
+      <article class="service reveal">
+        <span class="service-num">01</span>
+        <h3>Web Application Development</h3>
+        <p>Custom websites and full web applications built end to end, with responsive front ends, clean APIs and databases designed to scale. From a single landing page to a complete SaaS-style platform.</p>
+        <ul class="service-points"><li>React &amp; Next.js</li><li>Node.js back ends</li><li>Responsive design</li></ul>
+      </article>
+      <article class="service reveal">
+        <span class="service-num">02</span>
+        <h3>AI Integration &amp; Automation</h3>
+        <p>Practical AI that earns its place: chatbots, LLM-powered features and automation workflows that remove repetitive manual work. Not buzzwords; tools that actually save time.</p>
+        <ul class="service-points"><li>AI chatbots</li><li>LLM features</li><li>Workflow automation</li></ul>
+      </article>
+      <article class="service reveal">
+        <span class="service-num">03</span>
+        <h3>API &amp; Backend Engineering</h3>
+        <p>The layer most projects underestimate: clean, well-documented APIs, sensible database design and reliable third-party integrations, built so the rest of the product can move fast.</p>
+        <ul class="service-points"><li>REST API design</li><li>Database architecture</li><li>Integrations</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section class="projects" id="projects">
+  <canvas class="constellation-bg" id="constellation"></canvas>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Selected work</span>
+      <h2>A Few of My Projects.</h2>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/HIRECRAFT (2).png" alt="Hire-Craft project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">Full-Stack · SaaS</span><span class="proj-num">01</span></div>
+          <h3>Hire-Craft</h3>
+          <p>A recruitment platform that replaces the usual mess of spreadsheets and email threads, automating screening, applicant tracking and scheduling so hiring teams focus on decisions, not admin.</p>
+          <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Node.js</span><span class="proj-tag">Automation</span></div>
+          <!-- REPLACE_ME: live demo or GitHub repo -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/lms.png" alt="School LMS project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">Full-Stack · Education</span><span class="proj-num">02</span></div>
+          <h3>School LMS</h3>
+          <p>A learning management system for private schools, covering attendance, grading, curriculum tracking and teacher-student communication in one place, with enterprise capability minus the cost.</p>
+          <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Node.js</span><span class="proj-tag">PostgreSQL</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/house price.png" alt="House Price Predictor project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">AI / ML · Python</span><span class="proj-num">03</span></div>
+          <h3>House Price Predictor</h3>
+          <p>A regression model for the Islamabad real estate market. Clean local data didn't exist, so I generated and calibrated synthetic training data from real pricing patterns.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Regression</span><span class="proj-tag">Machine Learning</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/car parking.png" alt="Smart Car Parking project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">AI / Computer Vision</span><span class="proj-num">04</span></div>
+          <h3>Smart Car Parking</h3>
+          <p>A real-time computer vision system for shopping-mall parking. Live camera feeds run through an image-processing pipeline that identifies free spaces and directs vehicle flow automatically.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Computer Vision</span><span class="proj-tag">Image Processing</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/spam rok.png" alt="Spam-Rok project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">AI / NLP · Security</span><span class="proj-num">05</span></div>
+          <h3>Spam-Rok</h3>
+          <p>An intelligent spam classifier tuned for the Pakistani digital context: the mix of Urdu, Roman Urdu and English that generic spam filters handle poorly. "Rok" means stop.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">NLP</span><span class="proj-tag">Classification</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/keylogger.png" alt="Keylogger Detector project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">Cybersecurity · Desktop</span><span class="proj-num">06</span></div>
+          <h3>Keylogger Detector</h3>
+          <p>A Windows security utility that monitors running processes for unauthorized keystroke logging, alerts the user on detection and attempts to terminate the threat before data leaves the machine.</p>
+          <div class="proj-tags"><span class="proj-tag">C#</span><span class="proj-tag">.NET</span><span class="proj-tag">Security</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/file integrity.png" alt="File Integrity Checker project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">Cybersecurity · Tooling</span><span class="proj-num">07</span></div>
+          <h3>File Integrity Checker</h3>
+          <p>A utility that uses cryptographic hashing to monitor files for unauthorized changes. It builds hash baselines, then flags any deviation, catching tampering or corruption that would go unnoticed.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Cryptography</span><span class="proj-tag">Hashing</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/hostel.png" alt="Hostel Bill Splitter project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">Full-Stack · Web App</span><span class="proj-num">08</span></div>
+          <h3>Hostel Bill Splitter</h3>
+          <p>A web app for shared living that fairly splits and tracks expenses between residents. It handles recurring bills, one-off costs, partial payments and running balances.</p>
+          <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Node.js</span><span class="proj-tag">Web App</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/offline text.png" alt="Offline Text Extraction project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">Desktop · OCR</span><span class="proj-num">09</span></div>
+          <h3>Offline Text Extraction</h3>
+          <p>A desktop OCR tool that extracts text from images entirely on-device, with no internet, no cloud upload and no account. Built for situations where privacy matters or connectivity can't be assumed.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">OCR</span><span class="proj-tag">Desktop</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/library.png" alt="Library Management project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">Full-Stack · System</span><span class="proj-num">10</span></div>
+          <h3>Library Management</h3>
+          <p>A full system for cataloguing, issuing and tracking library resources: member management, due dates, fines and inventory in one place, with an interface non-technical staff can run without training.</p>
+          <div class="proj-tags"><span class="proj-tag">Full-Stack</span><span class="proj-tag">Database</span><span class="proj-tag">System</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/weather.png" alt="Weather Forecast App project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">Web App · API</span><span class="proj-num">11</span></div>
+          <h3>Weather Forecast App</h3>
+          <p>A real-time weather application pulling live atmospheric data through API integration, presented in a clean, readable interface. It was built as much as a study in real-time data handling as a practical tool.</p>
+          <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">API</span><span class="proj-tag">Real-time</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/ai resume.png" alt="AI Resume Builder project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">AI / NLP · Full-Stack</span><span class="proj-num">12</span></div>
+          <h3>AI Resume Builder</h3>
+          <p>A resume generator driven by natural language processing. Users describe their experience in plain text and the engine extracts, structures and designs a professional, fully formatted resume.</p>
+          <div class="proj-tags"><span class="proj-tag">AI / NLP</span><span class="proj-tag">React</span><span class="proj-tag">Node.js</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-shot"><img src="assets/invoice.png" alt="Dynamic Invoice Generator project image" loading="lazy"></div>
+        <div class="proj-body">
+          <div class="proj-top"><span class="proj-cat">Full-Stack · Finance</span><span class="proj-num">13</span></div>
+          <h3>Dynamic Invoice Generator</h3>
+          <p>A focused tool for freelancers and contractors that compiles line items, calculates regional tax brackets and generate clean, professional PDF invoices, with logic built to avoid rounding errors.</p>
+          <div class="proj-tags"><span class="proj-tag">Full-Stack</span><span class="proj-tag">PDF</span><span class="proj-tag">SaaS</span></div>
+          <!-- REPLACE_ME -->
+          <a class="proj-link" href="#" data-replace="link">View project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+    <p class="proj-note reveal">A selection of thirteen projects across web, AI and security. <strong>And there is plenty more available on request.</strong></p>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="eyebrow">Contact</span></div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="contact-lead">Have something you want <em>built</em>? Let's talk.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="https://www.linkedin.com/in/chaudhary-ehsan-rasheed-26800030b/" target="_blank" rel="noopener"><span class="ic">in</span><span>LinkedIn</span></a>
+          <a class="contact-link" href="https://github.com/EhcanRasheed" target="_blank" rel="noopener"><span class="ic">GH</span><span>GitHub</span></a>
+        </div>
+      </div>
+      <form class="reveal" id="contact-form">
+        <input type="hidden" name="access_key" value="5d43d86f-b519-459b-acde-d586774eb34d">
+        <input type="hidden" name="subject" value="New inquiry from portfolio site">
+        <div class="form-field">
+          <input type="text" id="name" name="name" placeholder=" " required>
+          <label for="name">Your name</label>
+        </div>
+        <div class="form-field">
+          <input type="email" id="email" name="email" placeholder=" " required>
+          <label for="email">Your email</label>
+        </div>
+        <div class="form-field">
+          <textarea id="message" name="message" placeholder=" " required></textarea>
+          <label for="message">Your message</label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-submit">
+          Send message
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         </button>
+        <div class="form-status" id="form-status"></div>
+      </form>
     </div>
+  </div>
+</section>
 
-    <!-- SCRIPTS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-    <script src="script.js"></script>
+<footer>
+  <div class="footer-in">
+    <span class="logo">Ehsan<span class="accent">.</span></span>
+    <span class="copy">© 2026 Ehsan. All rights reserved.</span>
+    <div class="footer-soc">
+      <a href="https://github.com/EhcanRasheed" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/chaudhary-ehsan-rasheed-26800030b/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- THEME TOGGLE ---- */
+  var html=document.documentElement;
+  var toggle=document.getElementById('theme-toggle');
+  var toggleUsed=false, nudgeTimer;
+  toggle.addEventListener('click',function(){
+    var next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+    html.setAttribute('data-theme',next);
+    toggleUsed=true;
+    if(nudgeTimer)clearInterval(nudgeTimer);
+    toggle.classList.remove('nudge');
+  });
+  if(!reduceMotion){
+    nudgeTimer=setInterval(function(){
+      if(toggleUsed){clearInterval(nudgeTimer);return;}
+      toggle.classList.add('nudge');
+      setTimeout(function(){toggle.classList.remove('nudge');},900);
+    },4000);
+  }
+
+  /* ---- nav scrolled ---- */
+  var nav=document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('scrolled',window.scrollY>40); }
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  /* ---- reveal ---- */
+  var revealEls=document.querySelectorAll('.reveal');
+  if(reduceMotion){ revealEls.forEach(function(el){el.classList.add('in');}); }
+  else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+    revealEls.forEach(function(el){io.observe(el);});
+  }
+
+  /* ---- read more ---- */
+  var aboutSec=document.getElementById('about');
+  var rmBtn=document.getElementById('read-more');
+  rmBtn.addEventListener('click',function(){
+    var open=aboutSec.classList.toggle('expanded');
+    rmBtn.setAttribute('aria-expanded',open?'true':'false');
+    rmBtn.querySelector('.rm-label').textContent=open?'Read less':'Read more';
+  });
+
+  /* ---- count-up ---- */
+  function animateCount(el){
+    var target=parseInt(el.getAttribute('data-count'),10);
+    var suf=el.querySelector('.suf'); var sh=suf?suf.outerHTML:'';
+    if(reduceMotion){ el.innerHTML=target+sh; return; }
+    var start=null,dur=1600;
+    function step(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      var e=1-Math.pow(1-p,3);
+      el.innerHTML=Math.round(target*e)+sh;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var statWrap=document.querySelector('.stats');
+  if(statWrap){
+    if(reduceMotion||!('IntersectionObserver' in window)){
+      document.querySelectorAll('.stat-num').forEach(animateCount);
+    }else{
+      var sio=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ document.querySelectorAll('.stat-num').forEach(animateCount); sio.unobserve(e.target);} });
+      },{threshold:0.4});
+      sio.observe(statWrap);
+    }
+  }
+
+  /* ---- contact form (Web3Forms) ---- */
+  var form=document.getElementById('contact-form');
+  var status=document.getElementById('form-status');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var btn=form.querySelector('.btn-submit'); var orig=btn.innerHTML;
+      btn.innerHTML='Sending…'; btn.style.pointerEvents='none';
+      status.textContent=''; status.className='form-status';
+      var data=JSON.stringify(Object.fromEntries(new FormData(form)));
+      fetch('https://api.web3forms.com/submit',{
+        method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:data
+      }).then(function(r){return r.json();}).then(function(res){
+        if(res.success){
+          status.textContent='Thanks, your message has been sent.';
+          status.className='form-status ok'; form.reset();
+        }else{
+          status.textContent='Something went wrong. Please email me directly.';
+          status.className='form-status err';
+        }
+        btn.innerHTML=orig; btn.style.pointerEvents='auto';
+      }).catch(function(){
+        status.textContent='Network error. Please email me directly.';
+        status.className='form-status err';
+        btn.innerHTML=orig; btn.style.pointerEvents='auto';
+      });
+    });
+  }
+
+  /* =========================================================
+     HERO 3D: morphing organic shape (canvas, no libraries)
+     ========================================================= */
+  var canvas=document.getElementById('hero-canvas');
+  if(canvas&&canvas.getContext){
+    var ctx=canvas.getContext('2d');
+    var DPR=Math.min(window.devicePixelRatio||1,2);
+    var size=0;
+    function css(name){ return getComputedStyle(html).getPropertyValue(name).trim(); }
+    function resize(){
+      var r=canvas.getBoundingClientRect(); size=r.width;
+      canvas.width=size*DPR; canvas.height=size*DPR;
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+    }
+    resize(); window.addEventListener('resize',resize);
+
+    var t=0, warp=0, warpT=0;
+    var vis=canvas.parentElement;
+    vis.addEventListener('mousemove',function(e){
+      var r=vis.getBoundingClientRect();
+      var nx=(e.clientX-r.left)/r.width-0.5;
+      var ny=(e.clientY-r.top)/r.height-0.5;
+      warpT=Math.min(0.4,Math.sqrt(nx*nx+ny*ny));
+    });
+    vis.addEventListener('mouseleave',function(){ warpT=0; });
+
+    function blobRadius(angle,base,time){
+      return base*(1
+        + 0.16*Math.sin(angle*3+time)
+        + 0.10*Math.sin(angle*5-time*1.3)
+        + 0.07*Math.sin(angle*2+time*0.7)
+        + warp*0.5*Math.sin(angle*4+time*2));
+    }
+    function drawBlob(){
+      ctx.clearRect(0,0,size,size);
+      var cx=size/2, cy=size/2, base=size*0.30;
+      warp+=(warpT-warp)*0.06;
+      var layers=[
+        {scale:1.0,fill:css('--blob1')},
+        {scale:0.82,fill:css('--blob2')},
+        {scale:0.6,fill:css('--blob3')}
+      ];
+      layers.forEach(function(layer,li){
+        var time=t+li*0.6;
+        ctx.beginPath();
+        var steps=120;
+        for(var i=0;i<=steps;i++){
+          var a=(i/steps)*Math.PI*2;
+          var r=blobRadius(a,base*layer.scale,time);
+          var x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r;
+          if(i===0)ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        }
+        ctx.closePath(); ctx.fillStyle=layer.fill; ctx.fill();
+      });
+      ctx.beginPath();
+      var st=120;
+      for(var j=0;j<=st;j++){
+        var an=(j/st)*Math.PI*2;
+        var rr=blobRadius(an,base*1.14,t-0.4);
+        var xx=cx+Math.cos(an)*rr, yy=cy+Math.sin(an)*rr;
+        if(j===0)ctx.moveTo(xx,yy); else ctx.lineTo(xx,yy);
+      }
+      ctx.closePath();
+      ctx.strokeStyle=css('--blob-stroke'); ctx.lineWidth=1; ctx.stroke();
+    }
+    /* ---- particle sphere (dark theme) ---- */
+    var SP_N=92, sp3=[];
+    for(var si=0;si<SP_N;si++){
+      var sy=1-(si/(SP_N-1))*2;
+      var srad=Math.sqrt(1-sy*sy);
+      var sth=si*2.399963;
+      sp3.push([Math.cos(sth)*srad,sy,Math.sin(sth)*srad]);
+    }
+    function rot3(p,ax,ay){
+      var cx=Math.cos(ax),sx=Math.sin(ax);
+      var y1=p[1]*cx-p[2]*sx, z1=p[1]*sx+p[2]*cx;
+      var cy=Math.cos(ay),sy=Math.sin(ay);
+      return [p[0]*cy+z1*sy, y1, -p[0]*sy+z1*cy];
+    }
+    function rgbVar(name){ return css(name); }
+    function drawSphere(){
+      ctx.clearRect(0,0,size,size);
+      var cx=size/2, cy=size/2, R=size*0.34;
+      warp+=(warpT-warp)*0.06;
+      var ax=0.4+warp*1.2, ay=t+warp*1.5;
+      var pts=sp3.map(function(p){
+        var rp=rot3(p,ax,ay);
+        return {x:cx+rp[0]*R,y:cy+rp[1]*R,z:rp[2]};
+      });
+      var c1=css('--con'), c3=css('--c3-line');
+      for(var i=0;i<pts.length;i++){
+        for(var j=i+1;j<pts.length;j++){
+          var dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+          var d=Math.sqrt(dx*dx+dy*dy);
+          if(d<size*0.14){
+            var la=0.16*(1-d/(size*0.14));
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y);
+            ctx.strokeStyle='rgba('+c3+','+la.toFixed(3)+')';
+            ctx.lineWidth=0.7; ctx.stroke();
+          }
+        }
+      }
+      pts.forEach(function(p){
+        var al=0.3+Math.max(0,(p.z+1)/2)*0.7;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,1.5+Math.max(0,(p.z+1)/2)*2.3,0,Math.PI*2);
+        ctx.fillStyle='rgba('+c1+','+al.toFixed(2)+')';
+        ctx.fill();
+      });
+    }
+    function loop(){
+      var dark=html.getAttribute('data-theme')==='dark';
+      if(reduceMotion){ dark?drawSphere():drawBlob(); return; }
+      t+=dark?0.005:0.006;
+      dark?drawSphere():drawBlob();
+      requestAnimationFrame(loop);
+    }
+    loop();
+  }
+
+  /* =========================================================
+     PROJECTS BG: particle constellation
+     ========================================================= */
+  var con=document.getElementById('constellation');
+  if(con&&con.getContext&&!reduceMotion){
+    var cctx=con.getContext('2d');
+    var cw,ch,pts=[];
+    function conColor(){ return getComputedStyle(document.documentElement).getPropertyValue('--con').trim(); }
+    function csize(){
+      var r=con.getBoundingClientRect();
+      cw=r.width; ch=r.height; con.width=cw; con.height=ch;
+      var count=Math.round(Math.min(70,cw*ch/16000));
+      pts=[];
+      for(var i=0;i<count;i++){
+        pts.push({x:Math.random()*cw,y:Math.random()*ch,
+          vx:(Math.random()-0.5)*0.22,vy:(Math.random()-0.5)*0.22});
+      }
+    }
+    function cloop(){
+      var rgb=conColor();
+      cctx.clearRect(0,0,cw,ch);
+      for(var i=0;i<pts.length;i++){
+        var p=pts[i];
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>cw)p.vx*=-1;
+        if(p.y<0||p.y>ch)p.vy*=-1;
+        for(var j=i+1;j<pts.length;j++){
+          var q=pts[j];
+          var dx=p.x-q.x,dy=p.y-q.y;
+          var d=Math.sqrt(dx*dx+dy*dy);
+          if(d<120){
+            cctx.beginPath();
+            cctx.moveTo(p.x,p.y); cctx.lineTo(q.x,q.y);
+            cctx.strokeStyle='rgba('+rgb+','+(0.14*(1-d/120)).toFixed(3)+')';
+            cctx.lineWidth=1; cctx.stroke();
+          }
+        }
+      }
+      for(var k=0;k<pts.length;k++){
+        cctx.beginPath();
+        cctx.arc(pts[k].x,pts[k].y,1.7,0,Math.PI*2);
+        cctx.fillStyle='rgba('+rgb+',0.42)';
+        cctx.fill();
+      }
+      requestAnimationFrame(cloop);
+    }
+    var ro=new ResizeObserver(csize);
+    ro.observe(con);
+    csize(); cloop();
+  }
+})();
+</script>
 </body>
 </html>
